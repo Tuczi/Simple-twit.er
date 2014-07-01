@@ -20,6 +20,7 @@
 
 body {
   @include no-margin-padding;
+  line-height: 0;
 }
 
 nav {
@@ -50,4 +51,6 @@ header {
   font-size: 50px;
   font-weight: bold;
   font-family: fantasy;
+
+  line-height: 100%;
 }
