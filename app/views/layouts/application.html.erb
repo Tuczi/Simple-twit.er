@@ -8,7 +8,16 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-
+<header></header>
+<nav id='general'>
+</nav>
+<nav id='user'>
+  <%= render 'layouts/user_navigation' %>
+</nav>
+<div id='notifications'>
+  <p class="notice"><%= notice %></p>
+  <p class="alert"><%= alert %></p>
+</div>
 <%= yield %>
 
 </body>
