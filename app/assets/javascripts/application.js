@@ -15,3 +15,4 @@
 //= require turbolinks
 //= require_tree .
 
+var app = angular.module('twit.erApp', []);
