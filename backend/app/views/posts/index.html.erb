@@ -1,10 +1,10 @@
 <%= link_to 'New Post', new_post_path %>
 
-<div class="postContainer">
+<div class="posts">
   <% @posts.each do |post| %>
     <div class="post">
 	  <p class="content"><%= post.content %></p>
-	  <div class="contentContainter">
+	  <div class="comments">
 	  	<% post.comments.each do |comment| %>
 	  	  <div class="comment">
 	        <p class="content"><%= comment.content %></p>
