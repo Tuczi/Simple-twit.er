@@ -8,12 +8,14 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-<header>Twit.er
-  <nav id='general'>
-  </nav>
-  <nav id='user'>
-    <%= render 'layouts/user_navigation' %>
-  </nav>
+<header>
+  <div>Twit.er</div>
+  <span>
+    <nav id='general'></nav>
+	<nav id='user'>
+      <%= render 'layouts/user_navigation' %>
+    </nav>
+  </span>
 </header>
 <div id='notifications'>
   <p class="notice"><%= notice %></p>
