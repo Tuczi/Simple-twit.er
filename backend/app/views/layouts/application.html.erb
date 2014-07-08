@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html ng-app='twit.erApp'>
+<html ng-app='tApp'>
 <head>
   <title>SimpleTwitEr</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
@@ -9,17 +9,20 @@
 </head>
 <body>
 <header>Twit.er
-<nav id='general'>
-</nav>
-<nav id='user'>
-  <%= render 'layouts/user_navigation' %>
-</nav>
+  <nav id='general'>
+  </nav>
+  <nav id='user'>
+    <%= render 'layouts/user_navigation' %>
+  </nav>
 </header>
 <div id='notifications'>
   <p class="notice"><%= notice %></p>
   <p class="alert"><%= alert %></p>
 </div>
-<%= yield %>
-
+<div id="contentWrapper">
+  <div id="content">
+    <%= yield %>
+  </div>
+</div>
 </body>
 </html>
