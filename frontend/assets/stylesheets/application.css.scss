@@ -1,0 +1,70 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or vendor/assets/stylesheets of plugins, if any, can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any styles
+ * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
+ * file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+
+@import 'comments.css.scss';
+@import 'posts.css.scss';
+@import 'scaffolds.css.scss'; 
+ 
+@mixin no-margin-padding{
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  @include no-margin-padding;
+  line-height: 0;
+}
+
+nav {
+  font-size: 20px;
+  font-weight: bold;
+  font-family: fantasy;
+
+  &#user {
+    text-align: right;
+  }
+
+  ul, li {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    display: inline-block;
+  }
+}
+
+header {
+  height: 150px;
+  background: #58ACFA;
+  
+  color: #fff;
+  padding: 10px;
+  font-size: 50px;
+  font-weight: bold;
+  font-family: fantasy;
+
+  line-height: 100%;
+}
+#contentWrapper {
+  text-align: center;
+  line-height: 1em;
+  
+  #content {
+    width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: left;
+  }
+}

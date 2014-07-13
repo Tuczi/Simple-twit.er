@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html ng-app='tApp'>
+<head>
+  <title>SimpleTwitEr</title>
+  <link rel='stylesheet' type='text/css' href='generated/style.css'>
+  <script type='text/javascript' src='https://ajax.googleapis.com/ajax/libs/angularjs/1.2.18/angular.min.js'></script>
+  <script type='text/javascript' src='assets/javascripts/application.js'> </script>
+</head>
+<body>
+<header>
+  <div>Twit.er</div>
+  <span>
+    <nav id='general'></nav>
+	<user-nav></user-nav>
+  </span>
+</header>
+<div id='notifications'>
+  <p class="notice"><%= notice %></p>
+  <p class="alert"><%= alert %></p>
+</div>
+<div id="contentWrapper">
+  <div id="content">
+    <posts></posts>
+  </div>
+</div>
+</body>
+</html>

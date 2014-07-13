@@ -15,3 +15,6 @@
 /backend/log/*.log
 /backend/tmp
 /backend/bin
+
+/frontend/generated/*
+.sass-cache
