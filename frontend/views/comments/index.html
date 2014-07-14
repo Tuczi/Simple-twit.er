@@ -1,25 +1,5 @@
-<h1>Listing comments</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th>Content</th>
-      <th>Post</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @comments.each do |comment| %>
-      <tr>
-        <td><%= comment.content %></td>
-        <td><%= comment.post %></td>
-       <td><%= link_to 'Destroy', [@post, comment], method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New Comment', new_post_comment_path %>
+<div class="comments">
+	<div class="comment" ng-repeat="comment in comments">
+		<p>{{comment.content}}</p>
+	</div>
+</div>
