@@ -20,7 +20,8 @@ app.directive('userNav', function() {
 		templateUrl: 'views/comments/index.html',
 		
 		scope: {
-			comments: '='
+			comments: '=',
+			postId: '='
 		}
 	};
 }).directive('newPost', function() {
@@ -35,3 +36,30 @@ app.directive('userNav', function() {
 	};
 });
 
+app.controller('commentController', [ '$scope', function($scope) {
+	//$scope.comments = [];
+	$scope.comment = {};
+	
+	$scope.create = function(){
+		$scope.comments.push(this.comment);
+		$scope.comment = {};
+		//TODO ajax backend
+	}
+}]).controller('postController', ['$scope', '$http', function($scope, $http) {
+	$scope.posts = [];//[{content:'a',comments:[{content:'c_a'}]}];
+	$scope.post = {};
+	
+	$http.get('http://localhost:3000/posts.json').
+		success(function(data, status, headers, config){
+			$scope.posts = data;
+		}).
+		error(function(data, status, headers, config){
+			$('#notifications .alert').text('Error: get posts');
+	});
+	
+	$scope.create = function(){
+		$scope.posts.push(this.post);
+		$scope.post = {};
+		//TODO ajax backend
+	}
+}]);

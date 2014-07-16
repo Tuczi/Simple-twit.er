@@ -1,8 +1,8 @@
-<div class="posts">
+<div class="posts" ng-controller="postController">
+	<new-post ></new-post>
 	<div class="post" ng-repeat="post in posts">
 		<p>{{post.content}}</p>
-		<comments comments="post.comments"></comments>
-		<new-comment></new-comment>
+		<comments postId="post.id" comments="post.comments"></comments>
 	</div>
 </div>
 

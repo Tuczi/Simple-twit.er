@@ -1,5 +1,6 @@
-<div class="comments">
+<div class="comments" ng-controller="commentController">
 	<div class="comment" ng-repeat="comment in comments">
 		<p>{{comment.content}}</p>
 	</div>
+	<new-comment></new-comment>
 </div>
