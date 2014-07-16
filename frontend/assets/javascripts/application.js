@@ -45,10 +45,17 @@ app.controller('commentController', [ '$scope', function($scope) {
 		$scope.comment = {};
 		//TODO ajax backend
 	}
-}]).controller('postController', ['$scope', function($scope) {
-	//TODO init
-	$scope.posts = [{content:'a',comments:[{content:'c_a'}]}];
+}]).controller('postController', ['$scope', '$http', function($scope, $http) {
+	$scope.posts = [];//[{content:'a',comments:[{content:'c_a'}]}];
 	$scope.post = {};
+	
+	$http.get('http://localhost:3000/posts.json').
+		success(function(data, status, headers, config){
+			$scope.posts = data;
+		}).
+		error(function(data, status, headers, config){
+			$('#notifications .alert').text('Error: get posts');
+	});
 	
 	$scope.create = function(){
 		$scope.posts.push(this.post);
