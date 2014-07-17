@@ -15,13 +15,15 @@
  */
 
 @import 'comments.css.scss';
-@import 'posts.css.scss';
-@import 'scaffolds.css.scss'; 
+@import 'posts.css.scss'; 
  
-@mixin no-margin-padding{
+@mixin no-margin-padding {
   margin: 0;
   padding: 0;
 }
+
+$header-height: 150px;
+$header-color: #58ACFA;
 
 body {
   @include no-margin-padding;
@@ -46,8 +48,8 @@ nav {
 }
 
 header {
-  height: 150px;
-  background: #58ACFA;
+  height: $header-height;
+  background: $header-color;
   
   color: #fff;
   padding: 10px;
@@ -67,4 +69,27 @@ header {
     margin-right: auto;
     text-align: left;
   }
+}
+
+#notifications {
+	position: fixed;
+	left: 0;
+	top: $header-height + 50px;	
+	
+	width: 444px;
+
+	.notification {
+		border: solid;
+		border-width: 1px;
+		width: 100%;
+	}
+
+	.alert {
+		@extend .notification;
+		border-color: #faa;
+	}
+	.notice {
+		@extend .notification;
+		border-color: $header-color;
+	}
 }
