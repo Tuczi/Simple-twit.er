@@ -36,14 +36,22 @@ app.directive('userNav', function() {
 	};
 });
 
-app.controller('commentController', [ '$scope', function($scope) {
+app.controller('commentController', [ '$scope', '$http', function($scope, $http) {
 	//$scope.comments = [];
 	$scope.comment = {};
 	
 	$scope.create = function(){
+		$scope.comment.postId = $scope.postId;
 		$scope.comments.push(this.comment);
+
+		$http.post('http://localhost:3000/posts/' + $scope.postId + '/comments.json', $scope.comment).
+			success(function(data, status, headers, config){
+				$('#notifications .notice').text('Done: new comment');
+			}).
+			error(function(data, status, headers, config){
+				$('#notifications .alert').text('Error: new comment');
+		});
 		$scope.comment = {};
-		//TODO ajax backend
 	}
 }]).controller('postController', ['$scope', '$http', function($scope, $http) {
 	$scope.posts = [];//[{content:'a',comments:[{content:'c_a'}]}];
@@ -59,7 +67,14 @@ app.controller('commentController', [ '$scope', function($scope) {
 	
 	$scope.create = function(){
 		$scope.posts.push(this.post);
-		$scope.post = {};
-		//TODO ajax backend
+		
+		$http.post('http://localhost:3000/posts.json', $scope.post).
+			success(function(data, status, headers, config){
+				$('#notifications .notice').text('Done: new post');
+			}).
+			error(function(data, status, headers, config){
+				$('#notifications .alert').text('Error: new post');
+		});
+		$scope.post = {}
 	}
 }]);
