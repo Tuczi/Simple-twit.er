@@ -16,5 +16,7 @@
 /backend/tmp
 /backend/bin
 
-/frontend/generated/*
+/frontend/build
+/frontend/node_modules
 .sass-cache
+

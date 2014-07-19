@@ -1,0 +1,12 @@
+{
+	"name": "Simple-twit.er",
+	"version": "0.0.1",
+	"devDependencies": {
+		"grunt": "~0.4.5",
+		"grunt-contrib-jshint": "~0.10.0",
+		"grunt-contrib-uglify": "~0.5.0",
+		"grunt-contrib-sass": "~0.3.0",
+		"grunt-contrib-concat": "~0.4.0"
+	}
+}
+
