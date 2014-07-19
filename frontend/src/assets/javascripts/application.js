@@ -39,12 +39,12 @@ app.directive('userNav', function() {
 app.service('notificationService', function() {
 	function show(object) {
 		object.show('slow').delay(3000).slideUp();
-	};
+	}
 
 	function setNotification(object, msg){
 		object.text(msg);
 		show(object);
-	};
+	}
 	
 	this.alert = function(message) {
 		setNotification( $('#notifications .alert'), message );
@@ -52,10 +52,10 @@ app.service('notificationService', function() {
 
 	this.notice = function(message) {
 		setNotification( $('#notification .notice'), message);
-	};	
+	};
 });
 
-app.controller('commentController', [ '$scope', '$http', 'notifiactionService', function($scope, $http, notificationService) {
+app.controller('commentController', [ '$scope', '$http', 'notificationService', function($scope, $http, notificationService) {
 	//$scope.comments = [];
 	$scope.comment = {};
 	
@@ -71,9 +71,9 @@ app.controller('commentController', [ '$scope', '$http', 'notifiactionService', 
 				notificationService.alert('Error: new comment');
 		});
 		$scope.comment = {};
-	}
+	};
 }]).controller('postController', ['$scope', '$http', 'notificationService', function($scope, $http, notificationService) {
-	$scope.posts = [];//[{content:'a',comments:[{content:'c_a'}]}];
+	$scope.posts = [];
 	$scope.post = {};
 
 	$http.get('http://localhost:3000/posts.json').
@@ -95,6 +95,6 @@ app.controller('commentController', [ '$scope', '$http', 'notifiactionService', 
 				notificationService.alert('Error: new post');
 		});
 		$scope.post = {};
-	}
+	};
 }]);
 
