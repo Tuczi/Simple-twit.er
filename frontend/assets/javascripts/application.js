@@ -36,7 +36,26 @@ app.directive('userNav', function() {
 	};
 });
 
-app.controller('commentController', [ '$scope', '$http', function($scope, $http) {
+app.service('notificationService', function() {
+	function show(object) {
+		object.show('slow').delay(3000).slideUp();
+	};
+
+	function setNotification(object, msg){
+		object.text(msg);
+		show(object);
+	};
+	
+	this.alert = function(message) {
+		setNotification( $('#notifications .alert'), message );
+	};
+
+	this.notice = function(message) {
+		setNotification( $('#notification .notice'), message);
+	};	
+});
+
+app.controller('commentController', [ '$scope', '$http', 'notifiactionService', function($scope, $http, notificationService) {
 	//$scope.comments = [];
 	$scope.comment = {};
 	
@@ -46,23 +65,23 @@ app.controller('commentController', [ '$scope', '$http', function($scope, $http)
 
 		$http.post('http://localhost:3000/posts/' + $scope.postId + '/comments.json', $scope.comment).
 			success(function(data, status, headers, config){
-				$('#notifications .notice').text('Done: new comment');
+				notificationService.notice('Done: new comment');
 			}).
 			error(function(data, status, headers, config){
-				$('#notifications .alert').text('Error: new comment');
+				notificationService.alert('Error: new comment');
 		});
 		$scope.comment = {};
 	}
-}]).controller('postController', ['$scope', '$http', function($scope, $http) {
+}]).controller('postController', ['$scope', '$http', 'notificationService', function($scope, $http, notificationService) {
 	$scope.posts = [];//[{content:'a',comments:[{content:'c_a'}]}];
 	$scope.post = {};
-	
+
 	$http.get('http://localhost:3000/posts.json').
 		success(function(data, status, headers, config){
 			$scope.posts = data;
 		}).
 		error(function(data, status, headers, config){
-			$('#notifications .alert').text('Error: get posts');
+			notificationService.alert('Error: get posts');
 	});
 	
 	$scope.create = function(){
@@ -70,11 +89,12 @@ app.controller('commentController', [ '$scope', '$http', function($scope, $http)
 		
 		$http.post('http://localhost:3000/posts.json', $scope.post).
 			success(function(data, status, headers, config){
-				$('#notifications .notice').text('Done: new post');
+				notificationService.notice('Done: new post');
 			}).
 			error(function(data, status, headers, config){
-				$('#notifications .alert').text('Error: new post');
+				notificationService.alert('Error: new post');
 		});
-		$scope.post = {}
+		$scope.post = {};
 	}
 }]);
+
