@@ -9,7 +9,7 @@ grunt.initConfig({
 		},
 		dist: {
 			src: ['src/assets/javascripts/**/*.js'],
-			dest: 'build/assets/javascripts/application.js'
+			dest: 'build/assets/javascripts/main.js'
 		}
 	},
 	uglify: {
@@ -18,7 +18,7 @@ grunt.initConfig({
 		},
 		dist: {
 			files: {
-				'build/assets/javascripts/application.min.js': ['<%= concat.dist.dest %>']
+				'build/assets/javascripts/main.min.js': ['<%= concat.dist.dest %>']
 			}
 		}
 	},
@@ -39,7 +39,7 @@ grunt.initConfig({
 				style: 'nested'
 			},
 			files: {
-				'build/assets/stylesheets/style.css': 'src/assets/stylesheets/application.css.scss'
+				'build/assets/stylesheets/style.css': 'src/assets/stylesheets/main.css.scss'
 			}
 		}
 	},
@@ -47,7 +47,7 @@ grunt.initConfig({
 		main: {
 			files: [
 				{ expand: true, cwd: 'src', src: '**', dest: 'build/' },
-				{ src: 'src/application.html', dest: 'build/application.html' } 
+				{ src: 'src/index.html', dest: 'build/index.html' } 
 			]
 		}
 	}
@@ -61,5 +61,8 @@ grunt.loadNpmTasks('grunt-contrib-clean');
 grunt.loadNpmTasks('grunt-contrib-copy');
 
 grunt.registerTask('default', ['clean', 'jshint', 'sass', 'concat', 'uglify', 'copy']);
+
+grunt.registerTask('build:dev', ['clean', 'jshint', 'sass', 'concat', 'uglify', 'copy']);//TODO do not concat and uglify
+grunt.registerTask('build:production', ['clean', 'jshint', 'sass', 'concat', 'uglify', 'copy']);
 
 };
