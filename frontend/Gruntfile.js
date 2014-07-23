@@ -55,7 +55,7 @@ grunt.initConfig({
 			files: [
 				{ expand: true, cwd: 'src/views', src: '**', dest: 'build/views' },
 				{ src: 'src/index.html', dest: 'build/index.html' },
-				{ expand: true, cwd: 'src/assets/javascripts', src: '**', dest: 'build/assets/javasctips'}
+				{ expand: true, cwd: 'src/assets/javascripts', src: '**', dest: 'build/assets/javascripts'}
 			]
 		},
 		prod: {
@@ -77,9 +77,15 @@ grunt.initConfig({
 				},
 				basePath: 'build/',
 				baseUrl: '/'
-			}
+			},
+			basePath: 'build'
 		},
 		dev: {
+			files: {
+				'build/index.html': 'build/index.html'
+			}
+		},
+		prod: {
 			files: {
 				'build/index.html': 'build/index.html'
 			}
@@ -108,10 +114,11 @@ grunt.loadNpmTasks('grunt-contrib-connect');
 grunt.registerTask('default', ['build:dev']);
 
 grunt.registerTask('build:dev', ['clean', 'jshint', 'sass:dev', 'copy:dev', 'includeSource:dev']);
-grunt.registerTask('build:prod', ['clean', 'jshint', 'sass:prod', 'concat', 'uglify', 'copy:prod']);
+grunt.registerTask('build:prod', ['clean', 'jshint', 'sass:prod', 'concat', 'uglify', 'copy:prod','includeSource:prod']);
 grunt.registerTask('build:apache', ['build:prod', 'copy:apache']);
 
-grunt.registerTask('serve', ['serve:prod']);
+grunt.registerTask('s', ['serve']);
+grunt.registerTask('serve', ['serve:dev']);
 grunt.registerTask('serve:dev', ['build:dev', 'connect:serve']);
 grunt.registerTask('serve:prod', ['build:prod', 'connect:serve']);
 
