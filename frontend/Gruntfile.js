@@ -84,6 +84,15 @@ grunt.initConfig({
 				'build/index.html': 'build/index.html'
 			}
 		}
+	},
+	connect: {
+		serve: {
+			options: {
+				port: 9000,
+				base: 'build',
+				keepalive: true
+			}
+		}
 	}
 });
 
@@ -94,11 +103,17 @@ grunt.loadNpmTasks('grunt-contrib-concat');
 grunt.loadNpmTasks('grunt-contrib-clean');
 grunt.loadNpmTasks('grunt-contrib-copy');
 grunt.loadNpmTasks('grunt-include-source');
+grunt.loadNpmTasks('grunt-contrib-connect');
 
 grunt.registerTask('default', ['build:dev']);
 
 grunt.registerTask('build:dev', ['clean', 'jshint', 'sass:dev', 'copy:dev', 'includeSource:dev']);
 grunt.registerTask('build:prod', ['clean', 'jshint', 'sass:prod', 'concat', 'uglify', 'copy:prod']);
 grunt.registerTask('build:apache', ['build:prod', 'copy:apache']);
+
+grunt.registerTask('serve', ['serve:prod']);
+grunt.registerTask('serve:dev', ['build:dev', 'connect:serve']);
+grunt.registerTask('serve:prod', ['build:prod', 'connect:serve']);
+
 
 };
