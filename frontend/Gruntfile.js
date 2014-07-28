@@ -55,13 +55,15 @@ grunt.initConfig({
 			files: [
 				{ expand: true, cwd: 'src/views', src: '**', dest: 'build/views' },
 				{ src: 'src/index.html', dest: 'build/index.html' },
-				{ expand: true, cwd: 'src/assets/javascripts', src: '**', dest: 'build/assets/javascripts'}
+				{ expand: true, cwd: 'src/assets/javascripts', src: '**', dest: 'build/assets/javascripts'},
+				{ src: 'bower_components/angular-devise/lib/devise.js', dest: 'build/assets/javascripts/devise.js'}
 			]
 		},
 		prod: {
 			files: [
 				{ expand: true, cwd: 'src/views', src: '**', dest: 'build/views' },
-				{ src: 'src/index.html', dest: 'build/index.html'}
+				{ src: 'src/index.html', dest: 'build/index.html'},
+				{ src: 'bower_components/angular-devise/lib/devise-min.js', dest: 'build/assets/javascripts/devise-min.js'}
 			]				
 		},
 		apache: {

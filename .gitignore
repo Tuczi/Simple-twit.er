@@ -15,8 +15,11 @@
 /backend/log/*.log
 /backend/tmp
 /backend/bin
+/backend/Gemfile.lock
 
 /frontend/build
 /frontend/node_modules
+/frontend/bower_components
+/frontend/*.log
 .sass-cache
 
