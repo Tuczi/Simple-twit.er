@@ -129,32 +129,21 @@ app.controller('commentController', [ '$scope', '$http', 'notificationService', 
 	};
 }]);
 
-//just test
-app.controller('testController', [ 'notificationService','$http', function(notificationService, $http){
-	var credentials = {
-		email: 'a@a.pl',
-		password: '12345678'
+app.controller('authController', ['$scope', 'notificationService','Auth', function($scope, notificationService, Auth){
+	var user = {
+		email: '',
+		password: ''
 	};
-	
-	console.log(credentials);
 
-/*	Auth.login(credentials).then(function(user) {
-			console.log(user); // => {id: 1, ect: '...'}
-		}, function(error) {
-			// Authentication failed...
-			console.log("user auth failed");
-	});*/
-		$http.get('http://localhost:3000/users/sign_in.json', credentials).
-			success(function(data, status, headers, config){
-				notificationService.notice('Done: user');
-				console.log(data);
-			}).
-			error(function(data, status, headers, config){
-				notificationService.alert('Error: user');
-				console.log(data);
+	$scope.login = function(){
+		Auth.login(credentials).then(function(user) {
+				console.log(user);
+				 //TODO update view	
+			}, function(error) {
+				// Authentication failed...
+				console.log("user auth failed");
 		});
+	};
 
-
-//	console.log(Auth._currentUser); 
 }]);
 

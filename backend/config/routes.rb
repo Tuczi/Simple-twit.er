@@ -6,4 +6,5 @@ Rails.application.routes.draw do
   devise_for :users
   root to: "posts#index"
 
+  match 'users/sign_in', to: 'session#new', via: [:options]
 end

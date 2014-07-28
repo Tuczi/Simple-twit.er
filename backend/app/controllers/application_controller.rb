@@ -5,7 +5,9 @@ class ApplicationController < ActionController::Base
   before_filter :allow_cross_domain_access
   respond_to :html, :json
   after_filter :set_xsrf_token_cookie
-  
+
+  skip_before_filter :verify_authenticity_token #TODO remove
+
   protected
   	def allow_cross_domain_access
 		headers['Access-Control-Allow-Origin'] = '*'
