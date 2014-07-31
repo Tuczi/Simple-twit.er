@@ -130,12 +130,12 @@ app.controller('commentController', [ '$scope', '$http', 'notificationService', 
 }]);
 
 app.controller('authController', ['$scope', 'notificationService','Auth', function($scope, notificationService, Auth){
-	var user = {
-		email: '',
-		password: ''
+	var credentials = {
+		email: 'a@a.pl',
+		password: '12345678'
 	};
 
-	$scope.login = function(){
+//	$scope.login = function(){
 		Auth.login(credentials).then(function(user) {
 				console.log(user);
 				 //TODO update view	
@@ -143,7 +143,7 @@ app.controller('authController', ['$scope', 'notificationService','Auth', functi
 				// Authentication failed...
 				console.log("user auth failed");
 		});
-	};
+//	};
 
 }]);
 

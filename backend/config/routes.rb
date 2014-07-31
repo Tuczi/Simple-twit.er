@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'home/options'
+
   resources :posts do
     resources :comments, except: [:show, :edit]
   end
@@ -6,5 +8,5 @@ Rails.application.routes.draw do
   devise_for :users
   root to: "posts#index"
 
-  match 'users/sign_in', to: 'session#new', via: [:options]
+  match '*', to: 'home#options', via: [:options]
 end
